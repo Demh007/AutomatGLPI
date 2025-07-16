@@ -18,21 +18,11 @@ stocke app_token, user_token et l’URL de l’API GLPI (glpiUrl).
 <br />
 <br />
 3/ Ouverture de session GLPI  
-Nœud HTTP Request (« Init GLPI Session ») → GET {{glpiUrl}}/initSession  
-En‑têtes :  
-App-Token: {{app_token}}  
-Authorization: user_token {{user_token}}  
-Récupère et stocke le session_token.
-
 <img width="273" height="855" alt="image" src="https://github.com/user-attachments/assets/f1f0b00c-7368-48ff-a23f-c99eab16b6e9" />
 <br />
 <br />
 <br />
 4/ Création du ticket  
-Nœud HTTP Request (« Create GLPI Ticket ») → POST {{glpiUrl}}/Ticket  
-Body JSON : titre, description, urgence, nom de l’appelant, etc.  
-En‑têtes : mêmes + Session-Token: {{session_token}}.
-
 <img width="267" height="884" alt="image" src="https://github.com/user-attachments/assets/5caf29be-1ba6-47d8-93d5-dd0eb44c8b4d" />  
 <img width="263" height="476" alt="image" src="https://github.com/user-attachments/assets/1f82b902-d168-4c20-9c3f-cde750f82428" />
 <br />
