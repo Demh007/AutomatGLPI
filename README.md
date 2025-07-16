@@ -1,40 +1,27 @@
 
-# AutomatGLPI
-Automatisation de création de Tickets sur serveur GLPI par un Agent Vocal IA
+<br><img width="861" height="428" alt="workflow" src="https://github.com/user-attachments/assets/ad684380-fce4-4d29-854a-8a3194f5ec77" />
+<br>
+AutomatGLPI est un workflow n8n qui fait le lien entre l’agent vocal IA Rounded et l’API REST de GLPI pour créer automatiquement des tickets.
+<br>
+Pourquoi je l’ai créé ?
+Durant mon stage, j’ai constaté que les techniciens étaient fréquemment dérangés par des appels pour des problèmes qu’ils renvoyaient invariablement vers GLPI : “Il faut créer un ticket.” Cette double manipulation (répondre au téléphone, puis saisir le ticket) engendrait :
+<br>
+   - Des temps de latence dans le traitement des demandes.
+   - Des oublis ou des tickets incomplets.
+   - Une frustration des utilisateurs et des techniciens.
+<br>     
+<br>
+J’ai donc conçu ce workflow n8n + Rounded + GLPI pour automatiser à la volée la création de tickets, libérer du temps aux équipes et garantir une meilleure réactivité.
 
-1/ Réception de l’appel sur l'Agent Rounded  
-Rounded envoie un webhook HTTP POST à n8n avec les infos de l’appel (nom, service, description, urgence, contact).
+    Étape 1 : Rounded envoie à n8n un webhook contenant les infos de l’appelant (nom, service, description, urgence, contact).
 
-<img width="443" height="715" alt="image" src="https://github.com/user-attachments/assets/9dee964a-5b3a-4b5a-a530-d7c6a2e9ab90" />
-<br />
-<br />
-<br />
-2/ Préparation des données  
-Nœud Set (« configuration_glpi ») :  
-stocke app_token, user_token et l’URL de l’API GLPI (glpiUrl).
+    Étape 2 : Un nœud Set prépare les variables (app_token, user_token, glpiUrl).
 
-<img width="265" height="688" alt="20" src="https://github.com/user-attachments/assets/7dcd1837-1b29-49e5-9607-55d7c7a281fe" />
-<br />
-<br />
-<br />
-3/ Ouverture de session GLPI  
-<img width="273" height="855" alt="image" src="https://github.com/user-attachments/assets/f1f0b00c-7368-48ff-a23f-c99eab16b6e9" />
-<br />
-<br />
-<br />
-4/ Création du ticket  
-<img width="267" height="884" alt="image" src="https://github.com/user-attachments/assets/5caf29be-1ba6-47d8-93d5-dd0eb44c8b4d" /><img width="263" height="476" alt="image" src="https://github.com/user-attachments/assets/1f82b902-d168-4c20-9c3f-cde750f82428" />  
-<br />
-<br />
-<br />
-5/ GLPI reçoit bien le ticket  
+    Étape 3 : n8n appelle GET /initSession sur GLPI pour obtenir un session_token.
 
-<img width="1298" height="886" alt="image" src="https://github.com/user-attachments/assets/1a4072a5-85ff-4177-ac82-080365807d5a" />
-<br />
-<br />
-<br />
-Pour accéder au workflow complet, obtenir une démo privée ou discuter d’une licence d’exploitation contactez :
-mehdiazzimani.pro@gmail.com
-            
+    Étape 4 : n8n poste un nouveau ticket (POST /Ticket) avec les données de l’appel et le session_token.
 
-
+Ce process 100 % low‑code supprime la saisie manuelle des tickets, réduit les délais de prise en charge et assure une traçabilité immédiate dans GLPI.
+<br>
+<br>
+<img width="1175" height="882" alt="ticket1" src="https://github.com/user-attachments/assets/557cb492-a58e-4f21-828e-a26d9c9be12d" />
