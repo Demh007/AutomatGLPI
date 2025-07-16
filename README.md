@@ -12,7 +12,7 @@ Durant mon stage, j’ai constaté que les techniciens étaient fréquemment dé
 <br>
 J’ai donc conçu ce workflow n8n + Rounded + GLPI pour automatiser à la volée la création de tickets, libérer du temps aux équipes et garantir une meilleure réactivité.
 
-    Étape 1 : Rounded envoie à n8n un webhook contenant les infos de l’appelant (nom, service, description, urgence, contact).
+    Étape 1 : Rounded reçois un appel sur un numéro et envoie à n8n un webhook contenant les infos de l’appelant (nom, service, description, urgence, contact).
 
     Étape 2 : Un nœud Set prépare les variables (app_token, user_token, glpiUrl).
 
