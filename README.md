@@ -5,7 +5,6 @@ AutomatGLPI est un workflow n8n qui fait le lien entre l’agent vocal IA Rounde
 <br>
 Pourquoi je l’ai créé ?
 Durant mon stage, j’ai constaté que les techniciens étaient fréquemment dérangés par des appels pour des problèmes qu’ils renvoyaient invariablement vers GLPI : “Il faut créer un ticket.” Cette double manipulation (répondre au téléphone, puis saisir le ticket) engendrait :
-<br>
    - Des temps de latence dans le traitement des demandes.
    - Des oublis ou des tickets incomplets.
    - Une frustration des utilisateurs et des techniciens.
