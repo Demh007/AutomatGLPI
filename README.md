@@ -23,8 +23,7 @@ stocke app_token, user_token et l’URL de l’API GLPI (glpiUrl).
 <br />
 <br />
 4/ Création du ticket  
-<img width="267" height="884" alt="image" src="https://github.com/user-attachments/assets/5caf29be-1ba6-47d8-93d5-dd0eb44c8b4d" />  
-<img width="263" height="476" alt="image" src="https://github.com/user-attachments/assets/1f82b902-d168-4c20-9c3f-cde750f82428" />
+<img width="267" height="884" alt="image" src="https://github.com/user-attachments/assets/5caf29be-1ba6-47d8-93d5-dd0eb44c8b4d" /><img width="263" height="476" alt="image" src="https://github.com/user-attachments/assets/1f82b902-d168-4c20-9c3f-cde750f82428" />  
 <br />
 <br />
 <br />
