@@ -6,7 +6,12 @@ Automatisation de création de Tickets sur serveur GLPI par un Agent Vocal IA
 Rounded envoie un webhook HTTP POST à n8n avec les infos de l’appel (nom, service, description, urgence, contact).
 
 <img width="443" height="715" alt="image" src="https://github.com/user-attachments/assets/9dee964a-5b3a-4b5a-a530-d7c6a2e9ab90" />
-
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 2/ Préparation des données  
 Nœud Set (« configuration_glpi ») :  
 stocke app_token, user_token et l’URL de l’API GLPI (glpiUrl).
@@ -15,7 +20,9 @@ stocke app_token, user_token et l’URL de l’API GLPI (glpiUrl).
 <br />
 <br />
 <br />
-
+<br />
+<br />
+<br />
 3/ Ouverture de session GLPI  
 Nœud HTTP Request (« Init GLPI Session ») → GET {{glpiUrl}}/initSession  
 En‑têtes :  
@@ -27,7 +34,9 @@ Récupère et stocke le session_token.
 <br />
 <br />
 <br />
-
+<br />
+<br />
+<br />
 4/ Création du ticket  
 Nœud HTTP Request (« Create GLPI Ticket ») → POST {{glpiUrl}}/Ticket  
 Body JSON : titre, description, urgence, nom de l’appelant, etc.  
@@ -38,11 +47,21 @@ En‑têtes : mêmes + Session-Token: {{session_token}}.
 <br />
 <br />
 <br />
+<br />
+<br />
+<br />
 5/ GLPI reçoit bien le ticket  
 
 <img width="1298" height="886" alt="image" src="https://github.com/user-attachments/assets/1a4072a5-85ff-4177-ac82-080365807d5a" />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 
-
+Pour accéder au workflow complet, obtenir une démo privée ou discuter d’une licence d’exploitation contactez :
+mehdiazzimani.pro@gmail.com
             
 
 
