@@ -9,17 +9,11 @@ Rounded envoie un webhook HTTP POST à n8n avec les infos de l’appel (nom, ser
 <br />
 <br />
 <br />
-<br />
-<br />
-<br />
 2/ Préparation des données  
 Nœud Set (« configuration_glpi ») :  
 stocke app_token, user_token et l’URL de l’API GLPI (glpiUrl).
 
 <img width="265" height="688" alt="20" src="https://github.com/user-attachments/assets/7dcd1837-1b29-49e5-9607-55d7c7a281fe" />
-<br />
-<br />
-<br />
 <br />
 <br />
 <br />
@@ -34,9 +28,6 @@ Récupère et stocke le session_token.
 <br />
 <br />
 <br />
-<br />
-<br />
-<br />
 4/ Création du ticket  
 Nœud HTTP Request (« Create GLPI Ticket ») → POST {{glpiUrl}}/Ticket  
 Body JSON : titre, description, urgence, nom de l’appelant, etc.  
@@ -47,19 +38,12 @@ En‑têtes : mêmes + Session-Token: {{session_token}}.
 <br />
 <br />
 <br />
-<br />
-<br />
-<br />
 5/ GLPI reçoit bien le ticket  
 
 <img width="1298" height="886" alt="image" src="https://github.com/user-attachments/assets/1a4072a5-85ff-4177-ac82-080365807d5a" />
 <br />
 <br />
 <br />
-<br />
-<br />
-<br />
-
 Pour accéder au workflow complet, obtenir une démo privée ou discuter d’une licence d’exploitation contactez :
 mehdiazzimani.pro@gmail.com
             
