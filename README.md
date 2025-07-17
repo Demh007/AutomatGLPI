@@ -1,7 +1,7 @@
 
 <br><img width="861" height="428" alt="workflow" src="https://github.com/user-attachments/assets/ad684380-fce4-4d29-854a-8a3194f5ec77" />
 <br>
-AutomatGLPI est un workflow n8n qui fait le lien entre l’agent vocal IA Rounded et l’API REST de GLPI pour créer automatiquement des tickets.
+AutomatGLPI est un protoype de workflow n8n qui fait le lien entre l’agent vocal IA Rounded et l’API REST de GLPI pour créer automatiquement des tickets.
 <br>
 Pourquoi je l’ai créé ?
 Durant mon stage, j’ai constaté que les techniciens étaient fréquemment dérangés par des appels pour des problèmes qu’ils renvoyaient invariablement vers GLPI : “Il faut créer un ticket.” Cette double manipulation (répondre au téléphone, puis saisir le ticket) engendrait :
