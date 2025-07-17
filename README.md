@@ -26,6 +26,5 @@ Ce process 100 % low‑code supprime la saisie manuelle des tickets, réduit l
 <img width="1175" height="882" alt="ticket1" src="https://github.com/user-attachments/assets/557cb492-a58e-4f21-828e-a26d9c9be12d" />
 <br>
 <br>
-Pour accéder au workflow complet, obtenir une démo privée ou discuter d’une licence, contactez : mehdiazzimani.pro@gmail.com
 
 
