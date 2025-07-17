@@ -1,0 +1,203 @@
+{
+  "name": "My workflow 2",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "rounded-webhook",
+        "options": {
+          "responseData": "allEntries"
+        }
+      },
+      "id": "ff4d6a64-7cb5-48df-863c-089c8f0632c1",
+      "name": "Webhook Rounded",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        -400,
+        48
+      ],
+      "webhookId": "rounded-to-glpi"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e1d658ed-83ef-4345-9524-3dc28a0dcd22",
+              "name": "App_Token",
+              "value": "\"Le Token\"",
+              "type": "string"
+            },
+            {
+              "id": "ffdac4b7-6777-4e7a-b0fb-3feaba1504e5",
+              "name": "user_token",
+              "value": "user_token 'l'user Token\"",
+              "type": "string"
+            },
+            {
+              "id": "2b747ff6-46fa-421c-a771-96d210e3f35b",
+              "name": "glpiUrl",
+              "value": "http://adresseduserveur/glpi/apirest.php",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -144,
+        48
+      ],
+      "id": "ff51db78-09bf-4f36-bc8f-85f666158475",
+      "name": "configuration_glpi"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.glpiUrl }}/initSession",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $json.App_Token }}"
+            },
+            {
+              "name": "Authorization",
+              "value": "={{ $json.user_token }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "99837841-1fbe-4606-b1f8-f5b288c04326",
+      "name": "Init GLPI Session",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -96,
+        304
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $node[\"configuration_glpi\"].json.glpiUrl }}/Ticket",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "App-Token",
+              "value": "={{ $node[\"configuration_glpi\"].json.App_Token }}"
+            },
+            {
+              "name": "Session-Token",
+              "value": "={{ $json.session_token }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "input",
+              "value": "={{ { \"name\": \"Ticket Rounded - \" + $node[\"Webhook Rounded\"].json.body.caller_name, \"content\": \"Appelant: \" + $node[\"Webhook Rounded\"].json.body.caller_name + \"\\nService: \" + $node[\"Webhook Rounded\"].json.body.department + \"\\nProblème: \" + $node[\"Webhook Rounded\"].json.body.problem_description, \"urgency\": $node[\"Webhook Rounded\"].json.body.urgency || 3 } }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "aaa20aaf-5f6e-4580-b8d1-03c93fed4d79",
+      "name": "Create GLPI Ticket",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        64,
+        176
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "cc48e23d-8cb7-4b1d-b9d6-448b1e786ffd",
+      "name": "Send Response to Rounded",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        304,
+        16
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook Rounded": {
+      "main": [
+        [
+          {
+            "node": "configuration_glpi",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "configuration_glpi": {
+      "main": [
+        [
+          {
+            "node": "Init GLPI Session",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Init GLPI Session": {
+      "main": [
+        [
+          {
+            "node": "Create GLPI Ticket",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create GLPI Ticket": {
+      "main": [
+        [
+          {
+            "node": "Send Response to Rounded",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "3c31be37-d850-47da-bae2-16470d0b14dc",
+  "meta": {
+    "instanceId": "944938bbdb81d945159bbbb4fa57c4e5f530b095788a84b8c93f7aa3233fb5c1"
+  },
+  "id": "DE0BPiJaLnGwbmLS",
+  "tags": []
+}
