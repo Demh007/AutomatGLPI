@@ -23,6 +23,7 @@ J’ai donc conçu ce workflow n8n + Rounded + GLPI pour automatiser à la volé
 Ce process 100 % low‑code supprime la saisie manuelle des tickets, réduit les délais de prise en charge et assure une traçabilité immédiate dans GLPI.
 <br>
 <br>
+<img width="1100" height="489" alt="wehbook" src="https://github.com/user-attachments/assets/ae0bc4a9-ebfa-463f-aa99-f621a2971d2a" />
 <img width="1175" height="882" alt="ticket1" src="https://github.com/user-attachments/assets/557cb492-a58e-4f21-828e-a26d9c9be12d" />
 <br>
 <br>
